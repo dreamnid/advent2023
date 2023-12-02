@@ -36,9 +36,7 @@ def convert_word_with_digit(mystr: str):
     two3eight will return '2' (the string)
     atwo3eight will return None
     """
-    res = mystr
-
-    # assume myStr has the same casing
+    # assume mystr has the same casing
     trans_table = (('zero', '0'),
                    ('one', '1'),
                    ('two', '2'),
