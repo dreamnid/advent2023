@@ -1,8 +1,7 @@
 import json
 import time
-from typing import List, Union
 
-def get_file_contents(file: str) -> List[List[str]]:
+def get_file_contents(file: str) -> list[list[str]]:
     """
     Process the input file
 
@@ -14,7 +13,8 @@ def get_file_contents(file: str) -> List[List[str]]:
         content = fh.read()
         return [block.strip().split('\n') for block in content.strip().split('\n\n')]
 
-def find_var_parts_sum(input_list: List[int], desired_sum: int, num_addends=3, addends=None, addend_idx=0) -> Union[List[int], None]:
+
+def find_var_parts_sum(input_list: list[int], desired_sum: int, num_addends=3, addends: list[int | None] = None, addend_idx=0) -> list[int] | None:
     """
     Find the combination of numbers in the input_list that adds up to desired_sum
 
@@ -61,9 +61,9 @@ def find_var_parts_sum(input_list: List[int], desired_sum: int, num_addends=3, a
     return None
 
 
-def deep_copy_json(input):
+def deep_copy_json(myinput: str):
     # Uses json to deep copy
-    return json.loads(json.dumps(input))
+    return json.loads(json.dumps(myinput))
 
 
 class PrintTiming:
