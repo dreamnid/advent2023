@@ -82,3 +82,32 @@ class PrintTiming:
 
     def __exit__(self, exc_type, exc_value, traceback):
         print('timer: ', time() - self.timer)
+
+def get_neighbors(matrix, cur_row, cur_col):
+    res = []
+
+    num_rows = len(matrix)
+    num_cols = len(matrix[0])
+    # row on top
+    if 0 < cur_row:
+        if 0 < cur_col:
+            res.append(matrix[cur_row-1][cur_col-1])
+        res.append(matrix[cur_row-1][cur_col])
+        if cur_col < num_cols:
+            res.append(matrix[cur_row-1][cur_col+1])
+
+    # same row
+    if 0 < cur_col:
+        res.append(matrix[cur_row-1][cur_col-1])
+    if cur_col < num_cols:
+        res.append(matrix[cur_row-1][cur_col+1])
+
+    # row below
+    if cur_row < num_rows:
+        if 0 < cur_col:
+            res.append(matrix[cur_row+1][cur_col-1])
+        res.append(matrix[cur_row+1][cur_col])
+        if cur_col < num_cols:
+            res.append(matrix[cur_row+1][cur_col+1])
+
+    return res
