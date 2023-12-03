@@ -93,21 +93,21 @@ def get_neighbors(matrix, cur_row, cur_col):
         if 0 < cur_col:
             res.append(matrix[cur_row-1][cur_col-1])
         res.append(matrix[cur_row-1][cur_col])
-        if cur_col < num_cols:
+        if cur_col < num_cols-1:
             res.append(matrix[cur_row-1][cur_col+1])
 
     # same row
     if 0 < cur_col:
-        res.append(matrix[cur_row-1][cur_col-1])
-    if cur_col < num_cols:
-        res.append(matrix[cur_row-1][cur_col+1])
+        res.append(matrix[cur_row][cur_col-1])
+    if cur_col < num_cols-1:
+        res.append(matrix[cur_row][cur_col+1])
 
     # row below
-    if cur_row < num_rows:
+    if cur_row < num_rows-1:
         if 0 < cur_col:
             res.append(matrix[cur_row+1][cur_col-1])
         res.append(matrix[cur_row+1][cur_col])
-        if cur_col < num_cols:
+        if cur_col < num_cols-1:
             res.append(matrix[cur_row+1][cur_col+1])
 
     return res
