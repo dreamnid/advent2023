@@ -13,7 +13,7 @@ from humanize import intcomma
 
 # Fix path so we can do a relative import: https://stackoverflow.com/a/27876800
 if __name__ == '__main__':
-    if __package__:
+    if not __package__:
         import sys
         from os import path
         sys.path.append(path.dirname(path.dirname(path.abspath(__file__))))
