@@ -29,8 +29,6 @@ input = [line for line in get_file_contents(INPUT_FILE)[0]]
 RE_DIGIT = re.compile(r'\d')
 SYMBOL = re.compile(r'[^\w\s.]') # Exclude non word/space char and periods
 
-print([SYMBOL.match(x) for x in ['/', '*', '&']])
-
 nums = []
 for row, line in enumerate(input):
     cur_buf = ''
@@ -55,5 +53,4 @@ for row, line in enumerate(input):
     # nums = []
     # print('----')
 
-#print(nums)
 print('1:', sum(nums))
