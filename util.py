@@ -83,7 +83,12 @@ class PrintTiming:
     def __exit__(self, exc_type, exc_value, traceback):
         print('timer: ', time() - self.timer)
 
+
 def get_neighbors(matrix, cur_row, cur_col):
+    return [x[0] for x in get_neighbors_with_pos(matrix, cur_row, cur_col)]
+
+
+def get_neighbors_with_pos(matrix, cur_row, cur_col):
     res = []
 
     num_rows = len(matrix)
@@ -91,23 +96,23 @@ def get_neighbors(matrix, cur_row, cur_col):
     # row on top
     if 0 < cur_row:
         if 0 < cur_col:
-            res.append(matrix[cur_row-1][cur_col-1])
-        res.append(matrix[cur_row-1][cur_col])
+            res.append((matrix[cur_row-1][cur_col-1], (cur_row-1, cur_col-1)))
+        res.append((matrix[cur_row-1][cur_col], (cur_row-1, cur_col)))
         if cur_col < num_cols-1:
-            res.append(matrix[cur_row-1][cur_col+1])
+            res.append((matrix[cur_row-1][cur_col+1], (cur_row-1, cur_col+1)))
 
     # same row
     if 0 < cur_col:
-        res.append(matrix[cur_row][cur_col-1])
+        res.append((matrix[cur_row][cur_col-1], (cur_row, cur_col-1)))
     if cur_col < num_cols-1:
-        res.append(matrix[cur_row][cur_col+1])
+        res.append((matrix[cur_row][cur_col+1], (cur_row, cur_col+1)))
 
     # row below
     if cur_row < num_rows-1:
         if 0 < cur_col:
-            res.append(matrix[cur_row+1][cur_col-1])
-        res.append(matrix[cur_row+1][cur_col])
+            res.append((matrix[cur_row+1][cur_col-1], (cur_row+1, cur_col-1)))
+        res.append((matrix[cur_row+1][cur_col], (cur_row+1, cur_col)))
         if cur_col < num_cols-1:
-            res.append(matrix[cur_row+1][cur_col+1])
+            res.append((matrix[cur_row+1][cur_col+1], (cur_row+1, cur_col+1)))
 
     return res
