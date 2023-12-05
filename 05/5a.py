@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict
+from collections.abc import Iterable
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
@@ -8,6 +9,7 @@ import os
 import pprint
 import re
 from time import time
+from typing import NamedTuple
 
 from humanize import intcomma
 
@@ -22,10 +24,16 @@ if __name__ == '__main__':
         from util import *
 
 INPUT_FILE='5-input.txt'
-INPUT_FILE='5a-example.txt'
+# INPUT_FILE='5a-example.txt'
 
 input = get_file_contents(INPUT_FILE)
 seeds = [int(seed) for seed in input[0][0].split(': ')[1].split(' ')]
+
+
+class Mapping(NamedTuple):
+    dest: int # mapping to start pos
+    src: int  # mapping from start pos
+    size: int # range
 
 
 def get_mapper(cur_input):
@@ -33,7 +41,7 @@ def get_mapper(cur_input):
     return [[int(dest), int(src), int(size)] for dest, src, size in input_split]
 
 
-def remap(mappings, id):
+def remap(mappings: Iterable[Mapping], id: int):
     for dest, src, len in mappings:
         if src <= id < src+len:
             return dest + id - src
@@ -49,7 +57,7 @@ light_to_temperature = get_mapper(input[5][1:])
 temperature_to_humidity = get_mapper(input[6][1:])
 humidity_to_location = get_mapper(input[7][1:])
 
-locations = []
+locations: list[int] = []
 for seed in seeds:
     soil = remap(seed_to_soil, seed)
     fertilizer = remap(soil_to_fertilizer, soil)

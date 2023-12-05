@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict
+from collections.abc import Iterable
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
@@ -7,6 +8,7 @@ from operator import mul, itemgetter
 import os
 import pprint
 import re
+from typing import NamedTuple
 from time import time
 
 from humanize import intcomma
@@ -29,16 +31,27 @@ seeds = [int(seed) for seed in input[0][0].split(': ')[1].split(' ')]
 seed_pairs = sorted(list(zip(seeds[::2], seeds[1::2])), key=lambda x: x[0])
 
 
-def in_range(target, start, size):
+class Range(NamedTuple):
+    start: int
+    end: int
+
+
+class Mapping(NamedTuple):
+    dest: int # mapping to start pos
+    src: int  # mapping from start pos
+    size: int # range
+
+
+def in_range(target: int, start: int, size: int):
     return start <= target < start+size
 
 
 def get_mapper(cur_input):
     input_split = [x.split(' ') for x in cur_input]
-    return sorted([[int(dest), int(src), int(size)] for dest, src, size in input_split], key=itemgetter(1))
+    return sorted([Mapping(int(dest), int(src), int(size)) for dest, src, size in input_split], key=itemgetter(1))
 
 
-def remap_range(mappings, range):
+def remap_range(mappings: Iterable[Mapping], range: Range):
     res = []
     no_overlap = [range]
 
@@ -71,7 +84,7 @@ def remap_range(mappings, range):
     return res
 
 
-def calc_overlap(range1, range2):
+def calc_overlap(range1: Range, range2: Range):
     range1_start, range1_end = range1
     range2_start, range2_end = range2
     if range2_start > range1_start:
@@ -83,6 +96,7 @@ def calc_overlap(range1, range2):
 
     if temp_range1_start <= temp_range2_start <= temp_range1_end:
         return temp_range2_start, min(temp_range1_end, temp_range2_end)
+
 
 # Load the seeds into the ranges
 ranges = [[seed_start, seed_start+seed_size-1] for seed_start, seed_size in seed_pairs]
