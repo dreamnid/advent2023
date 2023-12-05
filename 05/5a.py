@@ -38,7 +38,7 @@ class Mapping(NamedTuple):
 
 def get_mapper(cur_input):
     input_split = [x.split(' ') for x in cur_input]
-    return [[int(dest), int(src), int(size)] for dest, src, size in input_split]
+    return [Mapping(int(dest), int(src), int(size)) for dest, src, size in input_split]
 
 
 def remap(mappings: Iterable[Mapping], id: int):
