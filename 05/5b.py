@@ -87,8 +87,7 @@ def calc_overlap(range1, range2):
 # Load the seeds into the ranges
 ranges = [[seed_start, seed_start+seed_size-1] for seed_start, seed_size in seed_pairs]
 
-# 7 mappings in total
-for i in range(1, 8):
+for i in range(1, len(input)):
     # Start idx at 1 since idx 0 are the seeds
     cur_mapping = get_mapper(input[i][1:])
     ranges = list(chain(*[remap_range(cur_mapping, cur_range) for cur_range in ranges]))
