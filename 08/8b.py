@@ -23,8 +23,8 @@ if __name__ == '__main__':
         from util import *
 
 INPUT_FILE='8-input.txt'
-INPUT_FILE='8b-example.txt'
-INPUT_FILE='8b-test.txt'
+# INPUT_FILE='8b-example.txt'
+# INPUT_FILE='8b-test.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
@@ -39,7 +39,6 @@ for node_line in node_lines:
 instructions = cycle(input[0])
 
 cur_nodes = list(filter(lambda x: x[-1] == 'A', nodes.keys())) 
-print(cur_nodes)
 
 def instruction_idx(instruct: Literal['L', 'R']) -> Literal[0, 1]:
     match instruct:
@@ -48,13 +47,21 @@ def instruction_idx(instruct: Literal['L', 'R']) -> Literal[0, 1]:
         case 'R':
             return 1
 
+distances = [0] * len(cur_nodes)
 num_steps = 0
-for instruct in instructions:
+for pc, instruct in enumerate(instructions, start=1):
     num_steps += 1
 
     cur_nodes = list(map(lambda x: nodes[x][instruction_idx(instruct)], cur_nodes))
     # print(num_steps, cur_nodes)
-    if all([cur_node[-1] == 'Z' for cur_node in cur_nodes]):
+    for node_id, cur_node in enumerate(cur_nodes):
+        if cur_node[-1] == 'Z':
+            if not distances[node_id]:
+                distances[node_id] = pc - distances[node_id]
+            # print(f'Found Z, node_id: {node_id} {pc} {pc % len(input[0])} distance: {distances[node_id]}')
+
+    if all(distances):
         break
 
-print('2:', num_steps)
+
+print('2:', math.lcm(*distances))
