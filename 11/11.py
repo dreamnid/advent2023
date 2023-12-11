@@ -40,40 +40,25 @@ for i in range(width):
     if all(line[i] == '.' for line in input):
         col_idx_to_expand.append(i)
 
-
-def expand_rows(row_idx: int | Iterable[int], my_array: Sequence[Sequence], value='.'):
-    if isinstance(row_idx, int):
-        row_idx = [row_idx]
-
-    row_to_insert = value * len(my_array[0])
-
-    for offset, cur_idx in enumerate(row_idx):
-        my_array.insert(cur_idx + offset, row_to_insert)
-
-
-def expand_cols(col_idx: int | Iterable[int], my_array: Sequence[Sequence], value='.'):
-    if isinstance(col_idx, int):
-        col_idx = [col_idx]
-
-    for row_idx, row in enumerate(my_array):
-        # print(row, col_idx)
-        row_list = list(row)
-        for offset, cur_col_idx in enumerate(col_idx):
-            row_list.insert(cur_col_idx + offset, value)
-        my_array[row_idx] = ''.join(row_list)
-        
-
-expand_rows(row_idx_to_expand, input)
-expand_cols(col_idx_to_expand, input)
-
 # print(pandas.DataFrame(input))
 
-galaxies: list[tuple[int, int]] = []
-for row_idx, row in enumerate(input):
-    for col_idx, col in enumerate(row):
-        if col == '#':
-           galaxies.append((row_idx, col_idx)) 
+def sum_shortest_distances(input, expand_time):
+    galaxies: list[tuple[int, int]] = []
+    for row_idx, row in enumerate(input):
+        for col_idx, col in enumerate(row):
+            if col == '#':
+                row_mult = len([cur_row_idx_to_expand for cur_row_idx_to_expand in row_idx_to_expand if cur_row_idx_to_expand < row_idx])
+                col_mult = len([cur_col_idx_to_expand for cur_col_idx_to_expand in col_idx_to_expand if cur_col_idx_to_expand < col_idx])
+                # print(row_idx, col_idx, '|', row_mult, col_mult)
+                galaxies.append((row_idx + (expand_time * row_mult), col_idx + (expand_time * col_mult))) 
 
-distances = [abs(cur_pair[0][0] - cur_pair[1][0]) + abs(cur_pair[0][1] - cur_pair[1][1]) for cur_pair in combinations(galaxies, 2)]
-print('1:', sum(distances))
+    # print(galaxies)
 
+    distances = [abs(cur_pair[0][0] - cur_pair[1][0]) + abs(cur_pair[0][1] - cur_pair[1][1]) for cur_pair in combinations(galaxies, 2)]
+    return sum(distances)
+
+print ('1:', sum_shortest_distances(input, 1))
+
+# print ('2-ex1:', sum_shortest_distances(input, 10 - 1))
+# print ('2-ex2:', sum_shortest_distances(input, 100 - 1))
+print ('2:', sum_shortest_distances(input, 1000000 - 1))
