@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict
+from collections.abc import Sequence
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
@@ -8,6 +9,7 @@ import os
 import pprint
 import re
 from time import time
+
 
 from humanize import intcomma
 
@@ -27,66 +29,57 @@ INPUT_FILE='12-input.txt'
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
 res = []
+expand = True 
+
+
+def solver(springs: Sequence[str], report: Sequence[int], springs_idx: int, report_part_idx, memo):
+    memo_key = (springs_idx, report_part_idx)
+    if memo_key in memo:
+        return memo[memo_key]
+
+    if report_part_idx == len(report):
+        # Ensure the rest of the springs are operational
+        return 0 if any((cur_spring == '#' for cur_spring in springs[springs_idx:])) else 1
+
+    if springs_idx == len(springs):
+        return 0
+
+    springs_required = report[report_part_idx]
+    
+    if len(springs) < springs_idx + springs_required:
+        return 0
+
+    # print([springs[i] for i in range(springs_idx, springs_idx+springs_required)])
+    satisfy_report_part = not any((springs[i] == '.' for i in range(springs_idx, springs_idx+springs_required)))
+
+    # Make sure we're at the end of string or there can be an operational spring afterwards
+    if len(springs) != springs_idx + springs_required and springs[springs_idx + springs_required] == '#':
+        satisfy_report_part = False
+
+    take_total = 0
+    if satisfy_report_part:
+        # Note the plus 1 because we're assuming there is a period after
+        take_total = solver(springs, report, springs_idx + springs_required + 1, report_part_idx + 1, memo)
+
+    leave_total = 0
+
+    if springs[springs_idx] in ['.', '?']:
+        leave_total = solver(springs, report, springs_idx + 1, report_part_idx, memo)
+    
+    memo[memo_key] = take_total + leave_total
+    return memo[memo_key]
+
+
 
 for line_idx, line in enumerate(input):
     springs, report = line.split(' ')
-    required_springs = sum((int(x) for x in report.split(',')))
-    matcher = re.compile(r'\.*' + r'[.]+'.join(rf'#{{{x}}}' for x in report.split(',')) + r'(\.+$|$)')
+    if expand:
+        springs = '?'.join([springs] * 5)
+        report = ','.join([report] * 5)
+        # print(springs, report)
+    report = list(int(x) for x in report.split(','))
 
-    # broke_runs_loc: dict[int, list[int]] = defaultdict(list)
-    # broke_buf = ''
-    # q_runs_loc: dict[int, list[int]] = defaultdict(list)
-    # q_buf = ''
-    # for idx, cur_char in enumerate(line+''):
-    #     match cur_char:
-    #         case '#':
-    #             broke_buf += '#'
+    res.append(solver(springs, report, 0, 0, {}))
 
-    #             if (q_buf_len := len(q_buf)):
-    #                 q_runs_loc[q_buf_len].append(idx - q_buf_len)
-    #                 q_buf = ''
-    #         case '?':
-    #             q_buf += '?'
-
-    #             if (broke_buf_len := len(broke_buf)):
-    #                 broke_runs_loc[broke_buf_len].append(idx - broke_buf_len)
-    #             broke_buf = ''
-    #         case _:
-    #             if (broke_buf_len := len(broke_buf)):
-    #                 broke_runs_loc[broke_buf_len].append(idx - broke_buf_len)
-    #             broke_buf = ''
-
-    #             if (q_buf_len := len(q_buf)):
-    #                 q_runs_loc[q_buf_len].append(idx - q_buf_len)
-    #             q_buf = ''
-
-    in_progress_combos = []
-    for idx, cur_char in enumerate(springs+''):
-        if cur_char == '?':
-            if not in_progress_combos:
-                in_progress_combos = [springs[:idx]]
-            new_springs = []
-            for cur_springs in in_progress_combos:
-                new_springs.append(cur_springs + '.')
-                new_springs.append(cur_springs + '#')
-            in_progress_combos = new_springs
-        else:
-            in_progress_combos = [f'{cur_springs}{cur_char}' for cur_springs in in_progress_combos]
-
-    valid = [cur_springs for cur_springs in filter(lambda x: len(x) >= len(springs), in_progress_combos) if matcher.match(cur_springs)]
-    # print(line_idx, 'valid', valid)
-    # print('in_progress', in_progress_combos)
-    res.append(len(valid))
-
-    if line_idx == 5 and False:
-        # pprint.pprint([cur_springs for cur_springs in filter(lambda x: len(x) >= len(springs), in_progress_combos)])
-        # print(matcher.search('.#.#..###'))
-        # print(springs, report, matcher, len(valid)) 
-        # pprint.pprint(valid)
-
-        break
-    # print(springs, report, matcher, len(valid)) 
-    # pprint.pprint(q_runs_loc)
-    # pprint.pprint(broke_runs_loc)
-
+# pprint.pprint(res)
 print('1:', sum(res))
