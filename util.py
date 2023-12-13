@@ -116,3 +116,17 @@ def get_neighbors_with_pos(matrix, cur_row, cur_col):
             res.append((matrix[cur_row+1][cur_col+1], (cur_row+1, cur_col+1)))
 
     return res
+
+
+def add_padding(matrix, pad_value='.'): 
+    """
+    Surround the 2d array with the pad_value
+
+    Helps with not worrying about boundaries
+    """
+    cur_res= [f'{pad_value}{matrix[i]}{pad_value}' for i in range(len(matrix))]
+
+    row_pad = pad_value * len(cur_res[0])
+    cur_res.insert(0, row_pad)
+    cur_res.append(row_pad)
+    return cur_res

@@ -47,14 +47,6 @@ def find_reflect(maze, max_num_diff=0):
             return i + 1 #num of rows above reflection point
     return None 
 
-def add_padding(maze): 
-    cur_res= [f'.{maze[i]}.' for i in range(len(maze))]
-
-    row_pad = '.' * len(cur_res[0])
-    cur_res.insert(0, row_pad)
-    cur_res.append(row_pad)
-    return cur_res
-
 
 def solver(max_num_diff=0):
     res = []
