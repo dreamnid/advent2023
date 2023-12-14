@@ -25,7 +25,7 @@ if __name__ == '__main__':
         from util import *
 
 INPUT_FILE='14-input.txt'
-INPUT_FILE='14a-example.txt'
+# INPUT_FILE='14a-example.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
