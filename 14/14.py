@@ -30,16 +30,11 @@ INPUT_FILE='14-input.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
-input = add_padding(input, '#')
-
 
 def transpose(matrix: Collection[str]):
     np_array = np.array([list(line) for line in matrix]) 
     return [''.join(line) for line in np_array.transpose()]
 
-transposed = transpose(input)
-
-# print(transposed)
 
 
 def rotate_cw(matrix: Collection[str]):
@@ -50,7 +45,6 @@ def rotate_cw(matrix: Collection[str]):
 tilt_seen = {}
 def tilt(matrix: Collection[str]):
     res_array = []
-    res_sum = 0
     seen_key = tuple(matrix)
 
     if seen_key in tilt_seen:
@@ -71,16 +65,12 @@ def tilt(matrix: Collection[str]):
 
         if buff:
             c = Counter(buff)
-            res_string += f"{'O' * c['#']}{'.' * c['.']}"
+            res_string += f"{'O' * c['O']}{'.' * c['.']}"
 
         res_array.append(res_string)
-        str_len = len(res_string)
-        for i, cur_char in enumerate(res_string):
-            if cur_char == 'O':
-                res_sum += str_len-i-1 # subtract 1 to account for padding
 
-    tilt_seen[seen_key] = res_array, res_sum    
-    return res_array, res_sum
+    tilt_seen[seen_key] = res_array
+    return res_array
 
 
 cycle_seen = {}
@@ -93,7 +83,7 @@ def cycle(matrix: Collection[str]):
         return cycle_seen[cycle_seen_key]
         pass
     for _ in range(4):
-        matrix, _ = tilt(matrix)
+        matrix = tilt(matrix)
         # print(i, pandas.DataFrame(transpose(matrix)))
         # print(i, 'calc load', calc_load(matrix))
         matrix = rotate_cw(matrix)
@@ -111,14 +101,16 @@ def calc_load(matrix: Collection[str]):
         str_len = len(line)
         for i, cur_char in enumerate(line):
             if cur_char == 'O':
-                res_sum += str_len - i - 1 # subtract 1 to account for padding
+                res_sum += str_len - i
     
     return res_sum
 
-# print(np.array(transposed))
-# # print()
 
-print('1:', tilt(transposed)[1])
+# Since we always tilt to the left, transpose the matrix to pretend
+# we are tilting up (to the north)
+transposed = transpose(input)
+# print(transposed)
+print('1:', calc_load(tilt(transposed)))
 
 res_seen = defaultdict(list) 
 seen_in_a_row_count = 0
