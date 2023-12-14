@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict, Counter
+from collections.abc import Collection
 import copy
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
@@ -80,42 +81,42 @@ def tilt(matrix):
     seen[seen_key] = res_array, res_sum    
     return res_array, res_sum
 
-print('1:', tilt(transposed)[1])
 
 cycle_seen = {}
-def cycle(matrix, num_times=1):
-    for i in range(num_times):
-        cycle_seen_key = tuple(matrix.copy())
-        # print(cycle_seen_key)
-        if cycle_seen_key in cycle_seen:
-            # print('hi')
-            # return cycle_seen[cycle_seen_key]
-            pass
-        for i in range(4):
-            matrix, _ = tilt(matrix)
-            # print(i, pandas.DataFrame(transpose(matrix)))
-            # print(i, 'calc load', calc_load(matrix))
-            matrix = rotate_cw(matrix)
+def cycle(matrix: Collection[str]):
+    cycle_seen_key = tuple(matrix.copy())
+    # print(cycle_seen_key)
+    if cycle_seen_key in cycle_seen:
+        # print('hi')
+        return cycle_seen[cycle_seen_key]
+        pass
+    for i in range(4):
+        matrix, _ = tilt(matrix)
+        # print(i, pandas.DataFrame(transpose(matrix)))
+        # print(i, 'calc load', calc_load(matrix))
+        matrix = rotate_cw(matrix)
 
-        # print(cycle_seen_key)
-        cycle_seen[cycle_seen_key] = matrix.copy()
+    # print(cycle_seen_key)
+    cycle_seen[cycle_seen_key] = matrix.copy()
     # print('calc_load', calc_load(matrix))
     return matrix
 
-def calc_load(matrix):
+
+def calc_load(matrix: list[str]):
     res_sum = 0
 
     for line in matrix:
         str_len = len(line)
         for i, cur_char in enumerate(line):
             if cur_char == 'O':
-                res_sum += str_len-i-1 # subtract 1 to account for padding
+                res_sum += str_len - i - 1 # subtract 1 to account for padding
     
     return res_sum
 
-
 # print(np.array(transposed))
 # # print()
+
+print('1:', tilt(transposed)[1])
 
 res_seen = defaultdict(list) 
 seen_in_a_row_count = 0
@@ -123,8 +124,10 @@ seen_in_a_row_start = None
 seen_in_a_row_res = None
 check_idx = 0
 el_in_cycle = []
+
 for i in range(0, 300):
-    res = calc_load(cycle(transposed, i))
+    transposed = cycle(transposed)
+    res = calc_load(transposed)
     if res in res_seen:
         if seen_in_a_row_count:
             seen_in_a_row_count += 1
@@ -139,7 +142,8 @@ for i in range(0, 300):
                         cycle_len = i - check_idx - seen_in_a_row_start + 1
                         # print('cycle', cycle_len)
                         # print(f'i: {i} check_idx: {check_idx} seen_in_row_start: {seen_in_a_row_start}')
-                        print('2:', el_in_cycle[(1000000000 - seen_in_a_row_start) % cycle_len])
+                        # print((1000000000 - seen_in_a_row_start) % cycle_len - 1)
+                        print('2:', el_in_cycle[(1000000000 - seen_in_a_row_start) % cycle_len - 1])
                         break
                 else:
                     check_idx = 0

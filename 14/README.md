@@ -35,4 +35,13 @@ No timing since answer is calculated outside
 real    4m35.543s
 user    4m35.679s
 sys     0m1.472s
+
+# part 2 with caching on cycle (now working) and removed double loop
+(.venv) vscode ➜ /workspaces/2023/14 (main) $ time python 14.py
+1: 108792
+2: 99118
+
+real    0m3.932s
+user    0m4.098s
+sys     0m1.487s
 ```
