@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from collections import defaultdict, Counter
+import copy
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
@@ -24,7 +25,7 @@ if __name__ == '__main__':
         from util import *
 
 INPUT_FILE='14-input.txt'
-# INPUT_FILE='14a-example.txt'
+INPUT_FILE='14a-example.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
@@ -83,9 +84,9 @@ print('1:', tilt(transposed)[1])
 
 cycle_seen = {}
 def cycle(matrix, num_times=1):
-
     for i in range(num_times):
-        cycle_seen_key = tuple(matrix)
+        cycle_seen_key = tuple(matrix.copy())
+        # print(cycle_seen_key)
         if cycle_seen_key in cycle_seen:
             # print('hi')
             # return cycle_seen[cycle_seen_key]
@@ -96,7 +97,8 @@ def cycle(matrix, num_times=1):
             # print(i, 'calc load', calc_load(matrix))
             matrix = rotate_cw(matrix)
 
-        cycle_seen[cycle_seen_key] = matrix
+        # print(cycle_seen_key)
+        cycle_seen[cycle_seen_key] = matrix.copy()
     # print('calc_load', calc_load(matrix))
     return matrix
 
@@ -115,34 +117,20 @@ def calc_load(matrix):
 # print(np.array(transposed))
 # # print()
 
-# # res_seen = defaultdict(list) 
-# # seen_in_a_row_count = 0
-# # seen_in_a_row_start = None
-# # for i in range(0, 30):
-# #     res = calc_load(cycle(transposed, i))
-# #     if res in res_seen:
-# #         if seen_in_a_row_count:
-# #             seen_in_a_row_count += 1
-# #         else:
-# #             seen_in_a_row_start = i
-# #             seen_in_a_row_count = 1
-# #         print('Seen res', res, f'seeen_row_start: {seen_in_a_row_start}', f'seen_row_count: {seen_in_a_row_count}', res_seen[res])
-# #     else:
-# #         seen_in_a_row_start = None
-# #         seen_in_a_row_count = 0
-# #     res_seen[res].append(i)
-# #     print(i, res, i % 4)
-# print(pandas.DataFrame(transpose(cycle(transposed, 1))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 2))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 3))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 4))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1000))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1001))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1002))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1003))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1004))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1005))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1006))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1007))))
-# print(pandas.DataFrame(transpose(cycle(transposed, 1008))))
-# pprint.pprint(res_seen)
+res_seen = defaultdict(list) 
+seen_in_a_row_count = 0
+seen_in_a_row_start = None
+for i in range(0, 30):
+    res = calc_load(cycle(transposed, i))
+    if res in res_seen:
+        if seen_in_a_row_count:
+            seen_in_a_row_count += 1
+        else:
+            seen_in_a_row_start = i
+            seen_in_a_row_count = 1
+        print('Seen res', res, f'seeen_row_start: {seen_in_a_row_start}', f'seen_row_count: {seen_in_a_row_count}', res_seen[res])
+    else:
+        seen_in_a_row_start = None
+        seen_in_a_row_count = 0
+    res_seen[res].append(i)
+    print(i, res, i % 4)
