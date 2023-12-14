@@ -4,7 +4,13 @@ Part 2, I looked at the output until I detect it is looping and look at the seen
 I look for when the cycle repeats again, then subtract to get the cycle length.
 Then use the following formula to calculate the index that you have calculated already: (1000000000 - `seen_row_start`) mod `cycle_length` + `seen_start`
 
-Then look up the value in being referred to the calculated index
+Then look up the value in being referred to the calculated index.
+
+For part b, I saw that `seen_row_start` is 154 whose result is 99146
+The next time that 99146 appears again and we confirmed the cycle starts over is 226
+226 - 154 = 72 which is the cycle length
+(1000000000 - 154) = 999999846 mode 72 = 54
+154 + 54 = 208 whose value is *99118*
 
 ## Performance
 ```bash
