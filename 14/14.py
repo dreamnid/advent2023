@@ -95,15 +95,8 @@ def cycle(matrix: Collection[str]):
 
 
 def calc_load(matrix: Collection[str]):
-    res_sum = 0
-
-    for line in matrix:
-        str_len = len(line)
-        for i, cur_char in enumerate(line):
-            if cur_char == 'O':
-                res_sum += str_len - i
-    
-    return res_sum
+    str_len = len(matrix[0])
+    return sum((str_len - i for line in matrix for i, cur_char in enumerate(line) if cur_char == 'O'))
 
 
 # Since we always tilt to the left, transpose the matrix to pretend
