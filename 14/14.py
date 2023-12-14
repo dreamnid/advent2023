@@ -32,7 +32,8 @@ input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
 input = add_padding(input, '#')
 
-def transpose(matrix):
+
+def transpose(matrix: Collection[str]):
     np_array = np.array([list(line) for line in matrix]) 
     return [''.join(line) for line in np_array.transpose()]
 
@@ -41,19 +42,19 @@ transposed = transpose(input)
 # print(transposed)
 
 
-def rotate_cw(matrix):
+def rotate_cw(matrix: Collection[str]):
     np_array = np.array([list(line) for line in matrix]) 
     return [''.join(line) for line in np.rot90(np_array)]
 
 
-seen = {}
-def tilt(matrix):
+tilt_seen = {}
+def tilt(matrix: Collection[str]):
     res_array = []
     res_sum = 0
     seen_key = tuple(matrix)
 
-    if seen_key in seen:
-        return seen[seen_key]
+    if seen_key in tilt_seen:
+        return tilt_seen[seen_key]
 
     for line in matrix:
         res_string = ''
@@ -78,7 +79,7 @@ def tilt(matrix):
             if cur_char == 'O':
                 res_sum += str_len-i-1 # subtract 1 to account for padding
 
-    seen[seen_key] = res_array, res_sum    
+    tilt_seen[seen_key] = res_array, res_sum    
     return res_array, res_sum
 
 
@@ -90,7 +91,7 @@ def cycle(matrix: Collection[str]):
         # print('hi')
         return cycle_seen[cycle_seen_key]
         pass
-    for i in range(4):
+    for _ in range(4):
         matrix, _ = tilt(matrix)
         # print(i, pandas.DataFrame(transpose(matrix)))
         # print(i, 'calc load', calc_load(matrix))
@@ -102,7 +103,7 @@ def cycle(matrix: Collection[str]):
     return matrix
 
 
-def calc_load(matrix: list[str]):
+def calc_load(matrix: Collection[str]):
     res_sum = 0
 
     for line in matrix:
@@ -125,7 +126,7 @@ seen_in_a_row_res = None
 check_idx = 0
 el_in_cycle = []
 
-for i in range(0, 300):
+for i in range(300):
     transposed = cycle(transposed)
     res = calc_load(transposed)
     if res in res_seen:
