@@ -85,6 +85,7 @@ def tilt(matrix: Collection[str]):
 
 cycle_seen = {}
 def cycle(matrix: Collection[str]):
+    """Tilt in N/W/S/E direction"""
     cycle_seen_key = tuple(matrix.copy())
     # print(cycle_seen_key)
     if cycle_seen_key in cycle_seen:
@@ -126,6 +127,7 @@ seen_in_a_row_res = None
 check_idx = 0
 el_in_cycle = []
 
+# Detect cycle of calc_loads
 for i in range(300):
     transposed = cycle(transposed)
     res = calc_load(transposed)
