@@ -26,4 +26,13 @@ sys     0m1.392s
 Tried 99119 - answer too high
 
 No timing since answer is calculated outside
+
+# part 2 with cycle detection
+(.venv) vscode ➜ /workspaces/2023/14 (main) $ time python 14.py
+1: 108792
+2: 99118
+
+real    4m35.543s
+user    4m35.679s
+sys     0m1.472s
 ```

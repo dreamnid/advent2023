@@ -120,17 +120,37 @@ def calc_load(matrix):
 res_seen = defaultdict(list) 
 seen_in_a_row_count = 0
 seen_in_a_row_start = None
-for i in range(0, 30):
+seen_in_a_row_res = None
+check_idx = 0
+el_in_cycle = []
+for i in range(0, 300):
     res = calc_load(cycle(transposed, i))
     if res in res_seen:
         if seen_in_a_row_count:
             seen_in_a_row_count += 1
+            el_in_cycle.append(res)
+
+            if seen_in_a_row_count > 3:
+                # print('i', i, 'done', seen_in_a_row_res, el_in_cycle)
+                if res == el_in_cycle[check_idx]:
+                    check_idx += 1
+                    if check_idx > 3:
+                        # Matched 3 elements, so assume we're good 
+                        cycle_len = i - check_idx - seen_in_a_row_start + 1
+                        # print('cycle', cycle_len)
+                        # print(f'i: {i} check_idx: {check_idx} seen_in_row_start: {seen_in_a_row_start}')
+                        print('2:', el_in_cycle[(1000000000 - seen_in_a_row_start) % cycle_len])
+                        break
+                else:
+                    check_idx = 0
         else:
             seen_in_a_row_start = i
             seen_in_a_row_count = 1
-        print('Seen res', res, f'seeen_row_start: {seen_in_a_row_start}', f'seen_row_count: {seen_in_a_row_count}', res_seen[res])
+            seen_in_a_row_res = res
+            el_in_cycle = [res]
+        # print('Seen res', res, f'seeen_row_start: {seen_in_a_row_start}', f'seen_row_count: {seen_in_a_row_count}', res_seen[res])
     else:
         seen_in_a_row_start = None
         seen_in_a_row_count = 0
     res_seen[res].append(i)
-    print(i, res, i % 4)
+    # print(i, res, i % 4)
