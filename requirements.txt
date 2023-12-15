@@ -2,3 +2,5 @@ humanize
 ipython
 ipdb
 requests
+pandas
+numpy

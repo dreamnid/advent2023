@@ -1,0 +1,563 @@
+0 101500 0
+1 100141 1
+2 100187 2
+3 100307 3
+4 100399 0
+5 100480 1
+6 100525 2
+7 100582 3
+8 100571 0
+9 100551 1
+10 100609 2
+11 100673 3
+12 100765 0
+13 100824 1
+14 100869 2
+15 100905 3
+16 100882 0
+17 100852 1
+18 100850 2
+19 100826 3
+20 100828 0
+21 100820 1
+22 100808 2
+23 100813 3
+24 100821 0
+25 100844 1
+26 100797 2
+27 100807 3
+Seen res 100826 seeen_row_start: 28 seen_row_count: 1 [19]
+28 100826 0
+29 100834 1
+30 100879 2
+31 100940 3
+32 101002 0
+33 101065 1
+34 101083 2
+35 101073 3
+36 101061 0
+37 101017 1
+38 100982 2
+39 100946 3
+40 100900 0
+41 100865 1
+Seen res 100826 seeen_row_start: 42 seen_row_count: 1 [19, 28]
+42 100826 2
+43 100791 3
+44 100763 0
+45 100724 1
+46 100663 2
+47 100599 3
+48 100513 0
+49 100414 1
+50 100333 2
+51 100228 3
+52 100154 0
+53 100098 1
+54 100030 2
+55 99998 3
+56 99939 0
+57 99901 1
+58 99837 2
+59 99780 3
+60 99690 0
+61 99644 1
+62 99595 2
+63 99545 3
+64 99503 0
+65 99455 1
+66 99438 2
+67 99427 3
+68 99417 0
+69 99375 1
+70 99364 2
+71 99354 3
+72 99329 0
+73 99325 1
+74 99316 2
+Seen res 99316 seeen_row_start: 75 seen_row_count: 1 [74]
+75 99316 3
+76 99290 0
+77 99265 1
+78 99211 2
+79 99200 3
+80 99179 0
+81 99168 1
+82 99172 2
+83 99166 3
+84 99165 0
+85 99137 1
+Seen res 99137 seeen_row_start: 86 seen_row_count: 1 [85]
+86 99137 2
+87 99111 3
+88 99099 0
+89 99118 1
+90 99131 2
+91 99162 3
+92 99150 0
+93 99139 1
+94 99142 2
+95 99146 3
+96 99095 0
+97 99112 1
+98 99133 2
+99 99147 3
+Seen res 99146 seeen_row_start: 100 seen_row_count: 1 [95]
+100 99146 0
+101 99124 1
+102 99144 2
+103 99151 3
+104 99130 0
+105 99108 1
+106 99127 2
+107 99149 3
+Seen res 99131 seeen_row_start: 108 seen_row_count: 1 [90]
+108 99131 0
+109 99120 1
+110 99129 2
+111 99153 3
+112 99135 0
+113 99143 1
+114 99123 2
+Seen res 99143 seeen_row_start: 115 seen_row_count: 1 [113]
+115 99143 3
+Seen res 99133 seeen_row_start: 115 seen_row_count: 2 [98]
+116 99133 0
+117 99105 1
+118 99125 2
+119 99138 3
+Seen res 99137 seeen_row_start: 120 seen_row_count: 1 [85, 86]
+120 99137 0
+121 99148 1
+122 99158 2
+Seen res 99139 seeen_row_start: 123 seen_row_count: 1 [93]
+123 99139 3
+Seen res 99127 seeen_row_start: 123 seen_row_count: 2 [106]
+124 99127 0
+125 99107 1
+126 99110 2
+127 99134 3
+128 99122 0
+Seen res 99150 seeen_row_start: 129 seen_row_count: 1 [92]
+129 99150 1
+130 99163 2
+131 99174 3
+Seen res 99123 seeen_row_start: 132 seen_row_count: 1 [114]
+132 99123 0
+133 99101 1
+Seen res 99112 seeen_row_start: 134 seen_row_count: 1 [97]
+134 99112 2
+135 99119 3
+Seen res 99118 seeen_row_start: 136 seen_row_count: 1 [89]
+136 99118 0
+Seen res 99135 seeen_row_start: 136 seen_row_count: 2 [112]
+137 99135 1
+Seen res 99165 seeen_row_start: 136 seen_row_count: 3 [84]
+138 99165 2
+Seen res 99179 seeen_row_start: 136 seen_row_count: 4 [80]
+139 99179 3
+Seen res 99158 seeen_row_start: 136 seen_row_count: 5 [122]
+140 99158 0
+141 99097 1
+142 99106 2
+143 99121 3
+144 99103 0
+Seen res 99131 seeen_row_start: 145 seen_row_count: 1 [90, 108]
+145 99131 1
+Seen res 99150 seeen_row_start: 145 seen_row_count: 2 [92, 129]
+146 99150 2
+147 99181 3
+Seen res 99163 seeen_row_start: 148 seen_row_count: 1 [130]
+148 99163 0
+149 99132 1
+150 99102 2
+151 99115 3
+Seen res 99105 seeen_row_start: 152 seen_row_count: 1 [117]
+152 99105 0
+153 99116 1
+Seen res 99146 seeen_row_start: 154 seen_row_count: 1 [95, 100]
+154 99146 2
+Seen res 99166 seeen_row_start: 154 seen_row_count: 2 [83]
+155 99166 3
+Seen res 99165 seeen_row_start: 154 seen_row_count: 3 [84, 138]
+156 99165 0
+Seen res 99137 seeen_row_start: 154 seen_row_count: 4 [85, 86, 120]
+157 99137 1
+Seen res 99137 seeen_row_start: 154 seen_row_count: 5 [85, 86, 120, 157]
+158 99137 2
+Seen res 99111 seeen_row_start: 154 seen_row_count: 6 [87]
+159 99111 3
+Seen res 99099 seeen_row_start: 154 seen_row_count: 7 [88]
+160 99099 0
+Seen res 99118 seeen_row_start: 154 seen_row_count: 8 [89, 136]
+161 99118 1
+Seen res 99131 seeen_row_start: 154 seen_row_count: 9 [90, 108, 145]
+162 99131 2
+Seen res 99162 seeen_row_start: 154 seen_row_count: 10 [91]
+163 99162 3
+Seen res 99150 seeen_row_start: 154 seen_row_count: 11 [92, 129, 146]
+164 99150 0
+Seen res 99139 seeen_row_start: 154 seen_row_count: 12 [93, 123]
+165 99139 1
+Seen res 99142 seeen_row_start: 154 seen_row_count: 13 [94]
+166 99142 2
+Seen res 99146 seeen_row_start: 154 seen_row_count: 14 [95, 100, 154]
+167 99146 3
+Seen res 99095 seeen_row_start: 154 seen_row_count: 15 [96]
+168 99095 0
+Seen res 99112 seeen_row_start: 154 seen_row_count: 16 [97, 134]
+169 99112 1
+Seen res 99133 seeen_row_start: 154 seen_row_count: 17 [98, 116]
+170 99133 2
+Seen res 99147 seeen_row_start: 154 seen_row_count: 18 [99]
+171 99147 3
+Seen res 99146 seeen_row_start: 154 seen_row_count: 19 [95, 100, 154, 167]
+172 99146 0
+Seen res 99124 seeen_row_start: 154 seen_row_count: 20 [101]
+173 99124 1
+Seen res 99144 seeen_row_start: 154 seen_row_count: 21 [102]
+174 99144 2
+Seen res 99151 seeen_row_start: 154 seen_row_count: 22 [103]
+175 99151 3
+Seen res 99130 seeen_row_start: 154 seen_row_count: 23 [104]
+176 99130 0
+Seen res 99108 seeen_row_start: 154 seen_row_count: 24 [105]
+177 99108 1
+Seen res 99127 seeen_row_start: 154 seen_row_count: 25 [106, 124]
+178 99127 2
+Seen res 99149 seeen_row_start: 154 seen_row_count: 26 [107]
+179 99149 3
+Seen res 99131 seeen_row_start: 154 seen_row_count: 27 [90, 108, 145, 162]
+180 99131 0
+Seen res 99120 seeen_row_start: 154 seen_row_count: 28 [109]
+181 99120 1
+Seen res 99129 seeen_row_start: 154 seen_row_count: 29 [110]
+182 99129 2
+Seen res 99153 seeen_row_start: 154 seen_row_count: 30 [111]
+183 99153 3
+Seen res 99135 seeen_row_start: 154 seen_row_count: 31 [112, 137]
+184 99135 0
+Seen res 99143 seeen_row_start: 154 seen_row_count: 32 [113, 115]
+185 99143 1
+Seen res 99123 seeen_row_start: 154 seen_row_count: 33 [114, 132]
+186 99123 2
+Seen res 99143 seeen_row_start: 154 seen_row_count: 34 [113, 115, 185]
+187 99143 3
+Seen res 99133 seeen_row_start: 154 seen_row_count: 35 [98, 116, 170]
+188 99133 0
+Seen res 99105 seeen_row_start: 154 seen_row_count: 36 [117, 152]
+189 99105 1
+Seen res 99125 seeen_row_start: 154 seen_row_count: 37 [118]
+190 99125 2
+Seen res 99138 seeen_row_start: 154 seen_row_count: 38 [119]
+191 99138 3
+Seen res 99137 seeen_row_start: 154 seen_row_count: 39 [85, 86, 120, 157, 158]
+192 99137 0
+Seen res 99148 seeen_row_start: 154 seen_row_count: 40 [121]
+193 99148 1
+Seen res 99158 seeen_row_start: 154 seen_row_count: 41 [122, 140]
+194 99158 2
+Seen res 99139 seeen_row_start: 154 seen_row_count: 42 [93, 123, 165]
+195 99139 3
+Seen res 99127 seeen_row_start: 154 seen_row_count: 43 [106, 124, 178]
+196 99127 0
+Seen res 99107 seeen_row_start: 154 seen_row_count: 44 [125]
+197 99107 1
+Seen res 99110 seeen_row_start: 154 seen_row_count: 45 [126]
+198 99110 2
+Seen res 99134 seeen_row_start: 154 seen_row_count: 46 [127]
+199 99134 3
+Seen res 99122 seeen_row_start: 154 seen_row_count: 47 [128]
+200 99122 0
+Seen res 99150 seeen_row_start: 154 seen_row_count: 48 [92, 129, 146, 164]
+201 99150 1
+Seen res 99163 seeen_row_start: 154 seen_row_count: 49 [130, 148]
+202 99163 2
+Seen res 99174 seeen_row_start: 154 seen_row_count: 50 [131]
+203 99174 3
+^[fSeen res 99123 seeen_row_start: 154 seen_row_count: 51 [114, 132, 186]
+204 99123 0
+Seen res 99101 seeen_row_start: 154 seen_row_count: 52 [133]
+205 99101 1
+Seen res 99112 seeen_row_start: 154 seen_row_count: 53 [97, 134, 169]
+206 99112 2
+Seen res 99119 seeen_row_start: 154 seen_row_count: 54 [135]
+207 99119 3
+Seen res 99118 seeen_row_start: 154 seen_row_count: 55 [89, 136, 161]
+208 99118 0
+Seen res 99135 seeen_row_start: 154 seen_row_count: 56 [112, 137, 184]
+209 99135 1
+Seen res 99165 seeen_row_start: 154 seen_row_count: 57 [84, 138, 156]
+210 99165 2
+Seen res 99179 seeen_row_start: 154 seen_row_count: 58 [80, 139]
+211 99179 3
+Seen res 99158 seeen_row_start: 154 seen_row_count: 59 [122, 140, 194]
+212 99158 0
+Seen res 99097 seeen_row_start: 154 seen_row_count: 60 [141]
+213 99097 1
+Seen res 99106 seeen_row_start: 154 seen_row_count: 61 [142]
+214 99106 2
+Seen res 99121 seeen_row_start: 154 seen_row_count: 62 [143]
+215 99121 3
+Seen res 99103 seeen_row_start: 154 seen_row_count: 63 [144]
+216 99103 0
+Seen res 99131 seeen_row_start: 154 seen_row_count: 64 [90, 108, 145, 162, 180]
+217 99131 1
+Seen res 99150 seeen_row_start: 154 seen_row_count: 65 [92, 129, 146, 164, 201]
+218 99150 2
+Seen res 99181 seeen_row_start: 154 seen_row_count: 66 [147]
+219 99181 3
+Seen res 99163 seeen_row_start: 154 seen_row_count: 67 [130, 148, 202]
+220 99163 0
+Seen res 99132 seeen_row_start: 154 seen_row_count: 68 [149]
+221 99132 1
+Seen res 99102 seeen_row_start: 154 seen_row_count: 69 [150]
+222 99102 2
+Seen res 99115 seeen_row_start: 154 seen_row_count: 70 [151]
+223 99115 3
+Seen res 99105 seeen_row_start: 154 seen_row_count: 71 [117, 152, 189]
+224 99105 0
+Seen res 99116 seeen_row_start: 154 seen_row_count: 72 [153]
+225 99116 1
+Seen res 99146 seeen_row_start: 154 seen_row_count: 73 [95, 100, 154, 167, 172]
+226 99146 2
+Seen res 99166 seeen_row_start: 154 seen_row_count: 74 [83, 155]
+227 99166 3
+Seen res 99165 seeen_row_start: 154 seen_row_count: 75 [84, 138, 156, 210]
+228 99165 0
+Seen res 99137 seeen_row_start: 154 seen_row_count: 76 [85, 86, 120, 157, 158, 192]
+229 99137 1
+Seen res 99137 seeen_row_start: 154 seen_row_count: 77 [85, 86, 120, 157, 158, 192, 229]
+230 99137 2
+Seen res 99111 seeen_row_start: 154 seen_row_count: 78 [87, 159]
+231 99111 3
+Seen res 99099 seeen_row_start: 154 seen_row_count: 79 [88, 160]
+232 99099 0
+Seen res 99118 seeen_row_start: 154 seen_row_count: 80 [89, 136, 161, 208]
+233 99118 1
+Seen res 99131 seeen_row_start: 154 seen_row_count: 81 [90, 108, 145, 162, 180, 217]
+234 99131 2
+Seen res 99162 seeen_row_start: 154 seen_row_count: 82 [91, 163]
+235 99162 3
+Seen res 99150 seeen_row_start: 154 seen_row_count: 83 [92, 129, 146, 164, 201, 218]
+236 99150 0
+Seen res 99139 seeen_row_start: 154 seen_row_count: 84 [93, 123, 165, 195]
+237 99139 1
+Seen res 99142 seeen_row_start: 154 seen_row_count: 85 [94, 166]
+238 99142 2
+Seen res 99146 seeen_row_start: 154 seen_row_count: 86 [95, 100, 154, 167, 172, 226]
+239 99146 3
+Seen res 99095 seeen_row_start: 154 seen_row_count: 87 [96, 168]
+240 99095 0
+Seen res 99112 seeen_row_start: 154 seen_row_count: 88 [97, 134, 169, 206]
+241 99112 1
+Seen res 99133 seeen_row_start: 154 seen_row_count: 89 [98, 116, 170, 188]
+242 99133 2
+Seen res 99147 seeen_row_start: 154 seen_row_count: 90 [99, 171]
+243 99147 3
+Seen res 99146 seeen_row_start: 154 seen_row_count: 91 [95, 100, 154, 167, 172, 226, 239]
+244 99146 0
+Seen res 99124 seeen_row_start: 154 seen_row_count: 92 [101, 173]
+245 99124 1
+Seen res 99144 seeen_row_start: 154 seen_row_count: 93 [102, 174]
+246 99144 2
+Seen res 99151 seeen_row_start: 154 seen_row_count: 94 [103, 175]
+247 99151 3
+Seen res 99130 seeen_row_start: 154 seen_row_count: 95 [104, 176]
+248 99130 0
+Seen res 99108 seeen_row_start: 154 seen_row_count: 96 [105, 177]
+249 99108 1
+Seen res 99127 seeen_row_start: 154 seen_row_count: 97 [106, 124, 178, 196]
+250 99127 2
+Seen res 99149 seeen_row_start: 154 seen_row_count: 98 [107, 179]
+251 99149 3
+Seen res 99131 seeen_row_start: 154 seen_row_count: 99 [90, 108, 145, 162, 180, 217, 234]
+252 99131 0
+Seen res 99120 seeen_row_start: 154 seen_row_count: 100 [109, 181]
+253 99120 1
+Seen res 99129 seeen_row_start: 154 seen_row_count: 101 [110, 182]
+254 99129 2
+Seen res 99153 seeen_row_start: 154 seen_row_count: 102 [111, 183]
+255 99153 3
+Seen res 99135 seeen_row_start: 154 seen_row_count: 103 [112, 137, 184, 209]
+256 99135 0
+Seen res 99143 seeen_row_start: 154 seen_row_count: 104 [113, 115, 185, 187]
+257 99143 1
+Seen res 99123 seeen_row_start: 154 seen_row_count: 105 [114, 132, 186, 204]
+258 99123 2
+Seen res 99143 seeen_row_start: 154 seen_row_count: 106 [113, 115, 185, 187, 257]
+259 99143 3
+Seen res 99133 seeen_row_start: 154 seen_row_count: 107 [98, 116, 170, 188, 242]
+260 99133 0
+Seen res 99105 seeen_row_start: 154 seen_row_count: 108 [117, 152, 189, 224]
+261 99105 1
+Seen res 99125 seeen_row_start: 154 seen_row_count: 109 [118, 190]
+262 99125 2
+Seen res 99138 seeen_row_start: 154 seen_row_count: 110 [119, 191]
+263 99138 3
+Seen res 99137 seeen_row_start: 154 seen_row_count: 111 [85, 86, 120, 157, 158, 192, 229, 230]
+264 99137 0
+Seen res 99148 seeen_row_start: 154 seen_row_count: 112 [121, 193]
+265 99148 1
+Seen res 99158 seeen_row_start: 154 seen_row_count: 113 [122, 140, 194, 212]
+266 99158 2
+Seen res 99139 seeen_row_start: 154 seen_row_count: 114 [93, 123, 165, 195, 237]
+267 99139 3
+Seen res 99127 seeen_row_start: 154 seen_row_count: 115 [106, 124, 178, 196, 250]
+268 99127 0
+Seen res 99107 seeen_row_start: 154 seen_row_count: 116 [125, 197]
+269 99107 1
+Seen res 99110 seeen_row_start: 154 seen_row_count: 117 [126, 198]
+270 99110 2
+Seen res 99134 seeen_row_start: 154 seen_row_count: 118 [127, 199]
+271 99134 3
+Seen res 99122 seeen_row_start: 154 seen_row_count: 119 [128, 200]
+272 99122 0
+Seen res 99150 seeen_row_start: 154 seen_row_count: 120 [92, 129, 146, 164, 201, 218, 236]
+273 99150 1
+Seen res 99163 seeen_row_start: 154 seen_row_count: 121 [130, 148, 202, 220]
+274 99163 2
+Seen res 99174 seeen_row_start: 154 seen_row_count: 122 [131, 203]
+275 99174 3
+Seen res 99123 seeen_row_start: 154 seen_row_count: 123 [114, 132, 186, 204, 258]
+276 99123 0
+Seen res 99101 seeen_row_start: 154 seen_row_count: 124 [133, 205]
+277 99101 1
+Seen res 99112 seeen_row_start: 154 seen_row_count: 125 [97, 134, 169, 206, 241]
+278 99112 2
+Seen res 99119 seeen_row_start: 154 seen_row_count: 126 [135, 207]
+279 99119 3
+Seen res 99118 seeen_row_start: 154 seen_row_count: 127 [89, 136, 161, 208, 233]
+280 99118 0
+Seen res 99135 seeen_row_start: 154 seen_row_count: 128 [112, 137, 184, 209, 256]
+281 99135 1
+Seen res 99165 seeen_row_start: 154 seen_row_count: 129 [84, 138, 156, 210, 228]
+282 99165 2
+Seen res 99179 seeen_row_start: 154 seen_row_count: 130 [80, 139, 211]
+283 99179 3
+Seen res 99158 seeen_row_start: 154 seen_row_count: 131 [122, 140, 194, 212, 266]
+284 99158 0
+Seen res 99097 seeen_row_start: 154 seen_row_count: 132 [141, 213]
+285 99097 1
+Seen res 99106 seeen_row_start: 154 seen_row_count: 133 [142, 214]
+286 99106 2
+Seen res 99121 seeen_row_start: 154 seen_row_count: 134 [143, 215]
+287 99121 3
+Seen res 99103 seeen_row_start: 154 seen_row_count: 135 [144, 216]
+288 99103 0
+Seen res 99131 seeen_row_start: 154 seen_row_count: 136 [90, 108, 145, 162, 180, 217, 234, 252]
+289 99131 1
+Seen res 99150 seeen_row_start: 154 seen_row_count: 137 [92, 129, 146, 164, 201, 218, 236, 273]
+290 99150 2
+Seen res 99181 seeen_row_start: 154 seen_row_count: 138 [147, 219]
+291 99181 3
+Seen res 99163 seeen_row_start: 154 seen_row_count: 139 [130, 148, 202, 220, 274]
+292 99163 0
+Seen res 99132 seeen_row_start: 154 seen_row_count: 140 [149, 221]
+293 99132 1
+Seen res 99102 seeen_row_start: 154 seen_row_count: 141 [150, 222]
+294 99102 2
+Seen res 99115 seeen_row_start: 154 seen_row_count: 142 [151, 223]
+295 99115 3
+Seen res 99105 seeen_row_start: 154 seen_row_count: 143 [117, 152, 189, 224, 261]
+296 99105 0
+Seen res 99116 seeen_row_start: 154 seen_row_count: 144 [153, 225]
+297 99116 1
+Seen res 99146 seeen_row_start: 154 seen_row_count: 145 [95, 100, 154, 167, 172, 226, 239, 244]
+298 99146 2
+Seen res 99166 seeen_row_start: 154 seen_row_count: 146 [83, 155, 227]
+299 99166 3
+Seen res 99165 seeen_row_start: 154 seen_row_count: 147 [84, 138, 156, 210, 228, 282]
+300 99165 0
+Seen res 99137 seeen_row_start: 154 seen_row_count: 148 [85, 86, 120, 157, 158, 192, 229, 230, 264]
+301 99137 1
+Seen res 99137 seeen_row_start: 154 seen_row_count: 149 [85, 86, 120, 157, 158, 192, 229, 230, 264, 301]
+302 99137 2
+Seen res 99111 seeen_row_start: 154 seen_row_count: 150 [87, 159, 231]
+303 99111 3
+Seen res 99099 seeen_row_start: 154 seen_row_count: 151 [88, 160, 232]
+304 99099 0
+Seen res 99118 seeen_row_start: 154 seen_row_count: 152 [89, 136, 161, 208, 233, 280]
+305 99118 1
+Seen res 99131 seeen_row_start: 154 seen_row_count: 153 [90, 108, 145, 162, 180, 217, 234, 252, 289]
+306 99131 2
+Seen res 99162 seeen_row_start: 154 seen_row_count: 154 [91, 163, 235]
+307 99162 3
+Seen res 99150 seeen_row_start: 154 seen_row_count: 155 [92, 129, 146, 164, 201, 218, 236, 273, 290]
+308 99150 0
+Seen res 99139 seeen_row_start: 154 seen_row_count: 156 [93, 123, 165, 195, 237, 267]
+309 99139 1
+Seen res 99142 seeen_row_start: 154 seen_row_count: 157 [94, 166, 238]
+310 99142 2
+Seen res 99146 seeen_row_start: 154 seen_row_count: 158 [95, 100, 154, 167, 172, 226, 239, 244, 298]
+311 99146 3
+Seen res 99095 seeen_row_start: 154 seen_row_count: 159 [96, 168, 240]
+312 99095 0
+Seen res 99112 seeen_row_start: 154 seen_row_count: 160 [97, 134, 169, 206, 241, 278]
+313 99112 1
+Seen res 99133 seeen_row_start: 154 seen_row_count: 161 [98, 116, 170, 188, 242, 260]
+314 99133 2
+Seen res 99147 seeen_row_start: 154 seen_row_count: 162 [99, 171, 243]
+315 99147 3
+Seen res 99146 seeen_row_start: 154 seen_row_count: 163 [95, 100, 154, 167, 172, 226, 239, 244, 298, 311]
+316 99146 0
+Seen res 99124 seeen_row_start: 154 seen_row_count: 164 [101, 173, 245]
+317 99124 1
+Seen res 99144 seeen_row_start: 154 seen_row_count: 165 [102, 174, 246]
+318 99144 2
+Seen res 99151 seeen_row_start: 154 seen_row_count: 166 [103, 175, 247]
+319 99151 3
+Seen res 99130 seeen_row_start: 154 seen_row_count: 167 [104, 176, 248]
+320 99130 0
+Seen res 99108 seeen_row_start: 154 seen_row_count: 168 [105, 177, 249]
+321 99108 1
+Seen res 99127 seeen_row_start: 154 seen_row_count: 169 [106, 124, 178, 196, 250, 268]
+322 99127 2
+Seen res 99149 seeen_row_start: 154 seen_row_count: 170 [107, 179, 251]
+323 99149 3
+Seen res 99131 seeen_row_start: 154 seen_row_count: 171 [90, 108, 145, 162, 180, 217, 234, 252, 289, 306]
+324 99131 0
+Seen res 99120 seeen_row_start: 154 seen_row_count: 172 [109, 181, 253]
+325 99120 1
+Seen res 99129 seeen_row_start: 154 seen_row_count: 173 [110, 182, 254]
+326 99129 2
+Seen res 99153 seeen_row_start: 154 seen_row_count: 174 [111, 183, 255]
+327 99153 3
+Seen res 99135 seeen_row_start: 154 seen_row_count: 175 [112, 137, 184, 209, 256, 281]
+328 99135 0
+Seen res 99143 seeen_row_start: 154 seen_row_count: 176 [113, 115, 185, 187, 257, 259]
+329 99143 1
+Seen res 99123 seeen_row_start: 154 seen_row_count: 177 [114, 132, 186, 204, 258, 276]
+330 99123 2
+Seen res 99143 seeen_row_start: 154 seen_row_count: 178 [113, 115, 185, 187, 257, 259, 329]
+331 99143 3
+Seen res 99133 seeen_row_start: 154 seen_row_count: 179 [98, 116, 170, 188, 242, 260, 314]
+332 99133 0
+Seen res 99105 seeen_row_start: 154 seen_row_count: 180 [117, 152, 189, 224, 261, 296]
+333 99105 1
+Seen res 99125 seeen_row_start: 154 seen_row_count: 181 [118, 190, 262]
+334 99125 2
+Seen res 99138 seeen_row_start: 154 seen_row_count: 182 [119, 191, 263]
+335 99138 3
+Seen res 99137 seeen_row_start: 154 seen_row_count: 183 [85, 86, 120, 157, 158, 192, 229, 230, 264, 301, 302]
+336 99137 0
+Seen res 99148 seeen_row_start: 154 seen_row_count: 184 [121, 193, 265]
+337 99148 1
+Seen res 99158 seeen_row_start: 154 seen_row_count: 185 [122, 140, 194, 212, 266, 284]
+338 99158 2
+Seen res 99139 seeen_row_start: 154 seen_row_count: 186 [93, 123, 165, 195, 237, 267, 309]
+339 99139 3
+Seen res 99127 seeen_row_start: 154 seen_row_count: 187 [106, 124, 178, 196, 250, 268, 322]
+340 99127 0
+Seen res 99107 seeen_row_start: 154 seen_row_count: 188 [125, 197, 269]
+341 99107 1
+Seen res 99110 seeen_row_start: 154 seen_row_count: 189 [126, 198, 270]
+342 99110 2
+Seen res 99134 seeen_row_start: 154 seen_row_count: 190 [127, 199, 271]
+343 99134 3
+Seen res 99122 seeen_row_start: 154 seen_row_count: 191 [128, 200, 272]
+344 99122 0
+Seen res 99150 seeen_row_start: 154 seen_row_count: 192 [92, 129, 146, 164, 201, 218, 236, 273, 290, 308]
+345 99150 1
+Seen res 99163 seeen_row_start: 154 seen_row_count: 193 [130, 148, 202, 220, 274, 292]
+346 99163 2
