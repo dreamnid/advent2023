@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
@@ -31,4 +31,19 @@ def hash(my_str: str):
 
 # print(hash('HASH') == 52)
 hashed_step = [hash(step) for step in input]
-print('1: ', sum(hashed_step))
+print('1:', sum(hashed_step))
+
+boxes = [OrderedDict() for _ in range(256)]
+
+for step in input:
+    if '=' in step:
+        label, focal_len = step.split('=')
+        boxes[hash(label)][label] = int(focal_len)
+    else:
+        label, _ = step.split('-')
+        box = boxes[hash(label)]
+        if label in box: 
+            del box[label]
+
+focusing_powers = [box_idx * lens_idx * focal_len for box_idx, box in enumerate(boxes, start=1) for lens_idx, focal_len in enumerate(box.values(), start=1)]
+print('2:', sum(focusing_powers))
