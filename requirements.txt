@@ -4,3 +4,4 @@ ipdb
 requests
 pandas
 numpy
+termcolor
