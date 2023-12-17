@@ -124,7 +124,13 @@ def add_padding(matrix, pad_value='.'):
 
     Helps with not worrying about boundaries
     """
-    cur_res= [f'{pad_value}{matrix[i]}{pad_value}' for i in range(len(matrix))]
+    if isinstance(matrix[0], str):
+        cur_res = [f'{pad_value}{matrix[i]}{pad_value}' for i in range(len(matrix))]
+    else:
+        cur_res = [[pad_value, *cur_row, pad_value] for cur_row in matrix]
+
+    if not isinstance(pad_value, str):
+        pad_value = [pad_value]
 
     row_pad = pad_value * len(cur_res[0])
     cur_res.insert(0, row_pad)
