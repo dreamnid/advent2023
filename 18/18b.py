@@ -24,7 +24,7 @@ if __name__ == '__main__':
         from util import *
 
 INPUT_FILE='18-input.txt'
-INPUT_FILE='18a-example.txt'
+# INPUT_FILE='18a-example.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
@@ -118,7 +118,9 @@ def fill(start_row_idx, start_col_idx, land):
         q.append((cur_pos[0]+1, cur_pos[1]))
         q.append((cur_pos[0], cur_pos[1]+1))
 
-fill(-143, 102, land)
+# find the upper left corner
+first_row  = sorted(list(land[row_idx_start].keys()))
+fill(row_idx_start + 1, first_row[0] + 1, land)
 
 counter = 0
 for row_idx in range(row_idx_start, row_idx_end + 1):
