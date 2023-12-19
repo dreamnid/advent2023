@@ -71,10 +71,11 @@ def parse_op(s):
         case '<':
             return lt
 
-
+# pyparsing schemas
 bool_op = pp.one_of('> <').setParseAction(parse_op)
 filter_expr = pp.Word(pp.alphas) + bool_op + pp.Word(pp.nums).setParseAction(lambda s: int(s[0])) + ':' + pp.Word(pp.alphas) ^ pp.Word(pp.alphas)
 
+# Get the workspaces definitions
 workflows: dict[str, any] = {}
 for line in get_file_contents(INPUT_FILE)[0]:
     filter_start = line.index('{')
@@ -82,6 +83,7 @@ for line in get_file_contents(INPUT_FILE)[0]:
     workflow_name = line[:filter_start] 
     workflows[workflow_name] = filters
 
+# Find all paths that leads to an accepted state
 q = deque([History('in', ['in'])])
 history_with_accept: list[History] = []
 
@@ -115,11 +117,14 @@ while q:
                     neg_op = ge
                 case 'gt':
                     neg_op = le
+                # Don't need other cases as input only has > and <
+            # Track the predicates that lead to this point
             prev_predicates.append(Predicate(field_spec, neg_op, value))
 
 # pprint.pprint([(i, cur_hist.path) for i, cur_hist in enumerate(history_with_accept)])
 # pprint.pprint([(i, cur_hist.predicates) for i, cur_hist in enumerate(history_with_accept)])
 
+# Process the predicates in each accepted path
 acc = []
 for cur_history in history_with_accept:
     ranges = {'m': Range(), 's': Range(), 'a': Range(), 'x': Range()}
