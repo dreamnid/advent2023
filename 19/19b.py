@@ -118,7 +118,8 @@ while q:
                 case 'gt':
                     neg_op = le
                 # Don't need other cases as input only has > and <
-            # Track the predicates that lead to this point
+            # Track the predicates that lead to this point. Note that we negate the comparison 
+            # since if we did do this predicate, it would bail out to the next workflow
             prev_predicates.append(Predicate(field_spec, neg_op, value))
 
 # pprint.pprint([(i, cur_hist.path) for i, cur_hist in enumerate(history_with_accept)])
