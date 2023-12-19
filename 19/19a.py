@@ -3,7 +3,7 @@ from collections import defaultdict
 from functools import partial, reduce
 from itertools import chain, cycle, takewhile
 import math
-from operator import mul, itemgetter
+from operator import mul, gt, itemgetter, lt
 import os
 import pprint
 import re
@@ -26,8 +26,17 @@ INPUT_FILE='19-input.txt'
 # INPUT_FILE='19a-example.txt'
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
-bool_op = pp.one_of('> <')
-filter_expr = pp.Word(pp.alphas) + bool_op + pp.Word(pp.nums) + ':' + pp.Word(pp.alphas) ^ pp.Word(pp.alphas)
+
+def parse_op(s):
+    match s[0]:
+        case '>':
+            return gt
+        case '<':
+            return lt
+
+
+bool_op = pp.one_of('> <').setParseAction(parse_op)
+filter_expr = pp.Word(pp.alphas) + bool_op + pp.Word(pp.nums).setParseAction(lambda s: int(s[0])) + ':' + pp.Word(pp.alphas) ^ pp.Word(pp.alphas)
 
 workflows: dict[str, any] = {}
 for line in get_file_contents(INPUT_FILE)[0]:
@@ -61,15 +70,10 @@ for line in get_file_contents(INPUT_FILE)[1]:
                     next_workflow_key = cur_step[0]
                     break
             else:
-                field_spec, operator, value = cur_step[0], cur_step[1], int(cur_step[2])
-                match operator:
-                    case '>':
-                        math_op = lambda x, y: x > y
-                    case '<':
-                        math_op = lambda x, y: x < y
+                field_spec, math_comp, value, _, next_target = cur_step
                 
-                if math_op(item[field_spec], value):
-                    field_val = cur_step[4] 
+                if math_comp(item[field_spec], value):
+                    field_val = next_target 
             
             if field_val:
                 match field_val:
@@ -86,5 +90,3 @@ for line in get_file_contents(INPUT_FILE)[1]:
 
 print('1:', sum((sum(rating.values()) for rating in accepted)))
                             
-        
-                
