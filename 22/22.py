@@ -94,39 +94,22 @@ for block in blocks:
             cur_slope = int((tmp[1].col - tmp[0].col)/(tmp[1].row - tmp[0].row))
             num_steps = min(abs(tmp[1].col - tmp[0].col), abs(tmp[1].row - tmp[0].row)) + 1
             for i in range(num_steps):
-                if start_height > 0 and len(grid[tmp[0].row + i * cur_slope][tmp[0].col + i * cur_slope]) == start_height:
-                    supported_by[block].add(grid[tmp[0].row + i * cur_slope][tmp[0].col + i * cur_slope][-1])
-                    supports[grid[tmp[0].row + i * cur_slope][tmp[0].col + i * cur_slope][-1]].add(block)
+                if start_height > 0 and len(grid[tmp[0].row + i][tmp[0].col + i * cur_slope]) == start_height:
+                    supported_by[block].add(grid[tmp[0].row + i][tmp[0].col + i * cur_slope][-1])
+                    supports[grid[tmp[0].row + i][tmp[0].col + i * cur_slope][-1]].add(block)
                 while len(grid[tmp[0].row + i][tmp[0].col + i * cur_slope]) < start_height:
                     grid[tmp[0].row + i][tmp[0].col + i * cur_slope].append(None)
                 grid[tmp[0].row + i][tmp[0].col + i * cur_slope].append(block)
     else:
         if len(grid[block.start.row][block.start.col]) > 0:
             supported_by[block].add(grid[block.start.row][block.start.col][-1])
+            supports[grid[block.start.row][block.start.col][-1]].add(block)
         for i in range(min(block.start.height, block.end.height), max(block.start.height, block.end.height) + 1):
             grid[block.start.row][block.start.col].append(block)
 
-safe_to_remove: list[Block] = []
-for block in blocks:
-    if block.start.height == block.end.height:
-        if block.start.row == block.end.row:
-            if all((grid[block.start.row][i][-1].id == block.id or len(supported_by[grid[block.start.row][i][-1]]) > 1 for i in range(min(block.start.col, block.end.col), max(block.start.col, block.end.col) + 1))):
-                safe_to_remove.append(block)
-        elif block.start.col == block.end.col:
-            if all((grid[i][block.start.col][-1].id == block.id or len(supported_by[grid[i][block.start.col][-1]]) > 1 for i in range(min(block.start.row, block.end.row), max(block.start.row, block.end.row) + 1))):
-                safe_to_remove.append(block)
-        else:
-            tmp = sorted([block.start, block.end], key=lambda x: x.row)
-            cur_slope = int((tmp[1].col - tmp[0].col)/(tmp[1].row - tmp[0].row))
-            num_steps = min(abs(tmp[1].col - tmp[0].col), abs(tmp[1].row - tmp[0].row)) + 1
-            if all((grid[tmp[0].row + i][tmp[0].col + i * cur_slope][-1].id == block.id or len(supported_by[grid[tmp[0].row + i][tmp[0].col + i * cur_slope][-1]]) > 1 for i in range(num_steps))):
-                safe_to_remove.append(block)
-    else:
-        if grid[block.start.row][block.start.col][-1].id == block.id or len(supported_by[grid[block.start.row][block.start.col][-1]]) > 1:
-            safe_to_remove.append(block)
+safe_to_remove: list[Block] = [block for block in blocks if all(len(supported_by[supported_block]) != 1 for supported_block in supports[block])]
 
-
-pprint.pprint(grid)
+# pprint.pprint(grid)
 # pprint.pprint(supported_by)
 # pprint.pprint(safe_to_remove)
 
