@@ -6,3 +6,6 @@ pandas
 numpy
 termcolor
 pyparsing
+
+# dev
+ruff
