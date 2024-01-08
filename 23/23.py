@@ -31,9 +31,9 @@ if __name__ == "__main__":
         from util import *
 
 INPUT_FILE = "23-input.txt"
-INPUT_FILE = "23a-example.txt"
+# INPUT_FILE = "23a-example.txt"
 # INPUT_FILE = "23b-example.txt"
-INPUT_FILE = "23c-example.txt"
+# INPUT_FILE = "23c-example.txt"
 
 input = [line for line in get_file_contents(INPUT_FILE)[0]]
 
@@ -66,9 +66,9 @@ def next_node(
 
 
 def next_junction(cur_data: Data, path_segment: Path, queue: deque[Data]):
-    print("next junction", cur_data.pos, path_segment)
+    # print("next junction", f"pos: {cur_data.pos}", f"path: {path_segment}")
     next_path = copy(cur_data.path) + path_segment
-    compare_puzzle_paths(path_segment, cur_data.path, cur_data.pos)
+    # compare_puzzle_paths(path_segment, cur_data.path, cur_data.pos)
     queue.append(Data(path_segment[-1], next_path, None))
     pass
 
@@ -121,13 +121,14 @@ def solver(is_slopes_slippery=True):
     # paths: dict[Pos, Path] = dict()
     bad_pos: set(Pos) = set()
     bad_path_pos: dict[Pos, set[Pos]] = defaultdict(set)
-    start_path_to_first_junction: deque[Path] = deque()
-    first_junction: Junction = None
+    start_path_to_first_junction: deque[Path] = deque([Pos(0, 1)])
+    first_junction_pos: Pos | None = None
     idx = 0
 
+    # Build data structure via bfs
     while queue:
         idx += 1
-        cur_data = queue.pop()
+        cur_data = queue.popleft()
         cur_pos = cur_data.pos
 
         cur_val = get_input_value(cur_pos)
@@ -137,28 +138,18 @@ def solver(is_slopes_slippery=True):
         match cur_val:
             case ".":
                 if cur_pos == final_pos:
-                    completed.append(cur_data)
+                    # completed.append(cur_data)
                     last_junction = cur_data.last_split_path.popleft()
                     junctions[last_junction] = junctions[last_junction]._replace(
                         final_path=cur_data.last_split_path
                     )
-                    print_puzzle(cur_data.path)
+                    # print_puzzle(cur_data.path)
                     continue
                 elif cur_pos in junctions:
                     # We've been to this junction before
-                    if junctions[cur_pos].final_path:
-                        cur_data.path.extend(junctions[cur_pos].final_path)
-                        completed.append(cur_data)
-                        continue
-
-                    for junction_path in junctions[cur_pos].paths:
-                        if junction_path[-1] in cur_data.path:
-                            continue
-                        if not junction_path:
-                            continue
-                        tmp_max_path = copy(junction_path)
-                        tmp_max_path.popleft()
-                        next_junction(cur_data, tmp_max_path, queue)
+                    if cur_data.last_split_path:
+                        cur_data.last_split_path.append(cur_pos)
+                        cur_data.last_split_path.popleft()
                     continue
                 neighbors = [
                     cur_pos._replace(row=cur_pos.row - 1),
@@ -179,7 +170,13 @@ def solver(is_slopes_slippery=True):
             cur_neighbor
             for cur_neighbor in neighbors
             if (
-                cur_neighbor not in cur_data.path
+                (
+                    (
+                        cur_data.last_split_path
+                        and cur_neighbor not in cur_data.last_split_path
+                    )
+                    or not cur_data.last_split_path
+                )
                 and get_input_value(cur_neighbor) != "#"
             )
         ]
@@ -213,13 +210,15 @@ def solver(is_slopes_slippery=True):
                 # New Junction
                 cur_junction = Junction(paths=deque())
                 junctions[cur_pos] = cur_junction
-                if not first_junction:
-                    first_junction = cur_junction
+                if not first_junction_pos:
+                    first_junction_pos = cur_pos
                     start_path_to_first_junction.append(cur_pos)
                 # Add recipricol path
                 if cur_data.last_split_path:
+                    tmp_path = copy(cur_data.last_split_path)
+                    cur_junction.paths.append(deque(reversed(tmp_path)))
                     cur_data.last_split_path.append(cur_pos)
-                    cur_junction.paths.append(deque(reversed(cur_data.last_split_path)))
+                    cur_data.last_split_path.popleft()
 
                 # Add remaining paths
                 for cur_neighbor in valid_neighbors:
@@ -227,13 +226,49 @@ def solver(is_slopes_slippery=True):
                     cur_junction.paths.append(new_path)
                     next_node(cur_data, cur_neighbor, new_path, queue)
 
-        if idx % 1 == 0 or True:
+        if idx % 1 == 0 and False:
             print(f"idx {idx}")
             print_puzzle(cur_data.path, cur_pos)
+
+    if False:
+        for junc_pos, junction in junctions.items():
+            print(f"junc_pos {junc_pos} ")
+            pprint.pprint(junction.paths)
+    print("Finished creating graph")
+    print("*" * 80)
+
+    # Traverse segments via dfs to get longest path
+    queue: deque[Data] = deque(
+        [Data(first_junction_pos, start_path_to_first_junction, None)]
+    )
+    idx = 0
+    while queue:
+        idx += 1
+        cur_data = queue.pop()
+        cur_pos = cur_data.pos
+        # print('cur_pos', cur_pos, 'cur_path', cur_data.path)
+
+        if junctions[cur_pos].final_path:
+            cur_data.path.extend(junctions[cur_pos].final_path)
+            completed.append(cur_data)
+            continue
+
+        for junction_path in junctions[cur_pos].paths:
+            if not junction_path:
+                continue
+            if junction_path[-1] in cur_data.path:
+                continue
+            next_junction(cur_data, junction_path, queue)
+
+        if idx % 1 == 0 and False:
+            print(f"idx {idx}")
+            print_puzzle(cur_data.path, cur_pos)
+
     # pprint.pprint(junctions[Pos(1, 1)].paths)
     # pprint.pprint(junctions[Pos(1, 1)].paths)
     print("*" * 30)
     # pprint.pprint(junctions[Pos(3, 2)].paths)
+    # pprint.pprint(junctions[Pos(5, 3)].final_path)
     return completed
 
 
@@ -246,8 +281,10 @@ def solver(is_slopes_slippery=True):
 completed = sorted(
     list(solver(is_slopes_slippery=False)), key=lambda x: len(x.path), reverse=True
 )
-print([len(x.path) for x in completed])
-# pprint.pprint(completed)
-print_puzzle(completed[0].path)
-pprint.pprint(completed[0].path)
+# print([len(x.path) for x in completed])
+# for cur_complete in completed:
+    # pprint.pprint(cur_complete.path)
+# print_puzzle(completed[0].path)
+# print('completed[0]')
+# pprint.pprint(completed[0].path)
 print("2", len(completed[0].path))
