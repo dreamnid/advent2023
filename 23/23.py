@@ -158,13 +158,13 @@ def solver(is_slopes_slippery=True):
                     cur_pos._replace(col=cur_pos.col + 1),
                 ]
             case ">":
-                neighbors = [cur_data.cur_pos._replace(col=cur_pos.col + 1)]
+                neighbors = [cur_pos._replace(col=cur_pos.col + 1)]
             case "<":
-                neighbors = [cur_data.cur_pos._replace(col=cur_pos.col - 1)]
+                neighbors = [cur_pos._replace(col=cur_pos.col - 1)]
             case "v":
-                neighbors = [cur_data.cur_pos._replace(row=cur_pos.row + 1)]
+                neighbors = [cur_pos._replace(row=cur_pos.row + 1)]
             case "^":
-                neighbors = [cur_data.cur_pos._replace(row=cur_pos.row - 1)]
+                neighbors = [cur_pos._replace(row=cur_pos.row - 1)]
 
         valid_neighbors = [
             cur_neighbor
@@ -279,7 +279,7 @@ def solver(is_slopes_slippery=True):
 # print("1", len(completed[0].path))
 
 completed = sorted(
-    list(solver(is_slopes_slippery=False)), key=lambda x: len(x.path), reverse=True
+    list(solver(is_slopes_slippery=True)), key=lambda x: len(x.path), reverse=True
 )
 # print([len(x.path) for x in completed])
 # for cur_complete in completed:
